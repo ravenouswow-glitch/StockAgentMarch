@@ -3,7 +3,6 @@ import re
 from typing import List, Optional
 
 import requests
-from ddgs import DDGS
 
 from interfaces.data_provider import IDataProvider, NewsItem
 
@@ -152,6 +151,14 @@ class NewsConnector(IDataProvider):
 
     def _fetch_ddgs_news(self, ticker: str, max_items: int) -> List[NewsItem]:
         try:
+            try:
+                from ddgs import DDGS
+            except ImportError:
+                try:
+                    from duckduckgo_search import DDGS
+                except ImportError:
+                    return []
+
             with DDGS() as ddgs:
                 query = self._build_search_query(ticker)
                 results = list(ddgs.text(query, max_results=self.max_results))
