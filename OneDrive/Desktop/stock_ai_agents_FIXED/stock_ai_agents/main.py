@@ -7,6 +7,7 @@ from agents.director import Director
 from agents.news_hound import NewsHound
 from agents.signal_pro import SignalPro
 from config import Config
+from connectors.google_finance import GoogleFinanceConnector
 from connectors.news import NewsConnector
 from connectors.yahoo import YahooConnector
 from outputs.console import ConsoleOutput
@@ -18,7 +19,7 @@ async def run_full_analysis():
     print("FULL 4-AGENT ANALYSIS")
     print("=" * 60)
 
-    data_providers = [YahooConnector(), NewsConnector()]
+    data_providers = [GoogleFinanceConnector(), YahooConnector(), NewsConnector()]
     agents = [ChartMaster(), NewsHound(), SignalPro(), Director()]
     pipeline = FullAnalysisPipeline(data_providers, agents, ConsoleOutput())
 

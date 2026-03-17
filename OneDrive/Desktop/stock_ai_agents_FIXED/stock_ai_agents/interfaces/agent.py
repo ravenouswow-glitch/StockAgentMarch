@@ -47,7 +47,10 @@ class IAgent(ABC):
 
             prompt = self.build_prompt(input)
             if Config.has_groq_key():
-                response = await self._call_groq(prompt)
+                try:
+                    response = await self._call_groq(prompt)
+                except Exception:
+                    response = self._build_fallback_response(input)
             else:
                 response = self._build_fallback_response(input)
             return self.parse_response(response)

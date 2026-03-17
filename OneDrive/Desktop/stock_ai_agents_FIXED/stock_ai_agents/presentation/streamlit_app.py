@@ -19,7 +19,11 @@ if "analysis_result" not in st.session_state:
 
 with st.sidebar:
     st.title("Settings")
-    data_source = st.selectbox("Data Source", ["Yahoo Finance", "Google Finance", "Both (Auto-Fallback)"])
+    data_source = st.selectbox(
+        "Data Source",
+        ["Yahoo Finance", "Google Finance", "Both (Auto-Fallback)"],
+        index=1,
+    )
     use_chart = st.checkbox("ChartMaster", value=True)
     use_news = st.checkbox("NewsHound", value=True)
     use_signal = st.checkbox("SignalPro", value=True)
@@ -56,7 +60,7 @@ async def run_analysis_async(ticker, question, data_source, use_chart, use_news,
     elif data_source == "Google Finance":
         data_providers = [GoogleFinanceConnector(), NewsConnector()]
     else:
-        data_providers = [YahooConnector(), GoogleFinanceConnector(), NewsConnector()]
+        data_providers = [GoogleFinanceConnector(), YahooConnector(), NewsConnector()]
 
     agents = []
     if use_chart:
