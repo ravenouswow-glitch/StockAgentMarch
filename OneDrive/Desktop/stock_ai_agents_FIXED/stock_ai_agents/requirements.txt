@@ -1,0 +1,13 @@
+groq>=0.4.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+streamlit>=1.40.0
+plotly>=5.20.0
+gspread>=6.0.0
+google-auth>=2.27.0
+google-auth-oauthlib>=1.2.0
+pandas>=2.0.0
+numpy>=1.26.0
+ddgs>=9.0.0
+yfinance>=0.2.30
+feedparser>=6.0.0
