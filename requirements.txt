@@ -1,0 +1,1 @@
+-r OneDrive/Desktop/stock_ai_agents_FIXED/stock_ai_agents/requirements.txt
